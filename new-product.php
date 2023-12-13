@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="./assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="./assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -23,15 +25,15 @@
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo" href="./index.html"><img src="./assets/images/logo.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="./index.html"><img src="./assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <ul class="nav">
           <li class="nav-item profile">
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+                  <img class="img-xs rounded-circle " src="./assets/images/faces/face15.jpg" alt="">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
@@ -107,10 +109,10 @@
       </nav>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
-        <!-- partial:../../partials/_navbar.html -->
+        <!-- partial:./partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="./index.html"><img src="./assets/images/logo-mini.svg" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -180,7 +182,7 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                      <img src="../../assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
+                      <img src="./assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
                     </div>
                     <div class="preview-item-content">
                       <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
@@ -190,7 +192,7 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                      <img src="../../assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
+                      <img src="./assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
                     </div>
                     <div class="preview-item-content">
                       <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
@@ -200,7 +202,7 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                      <img src="../../assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
+                      <img src="./assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
                     </div>
                     <div class="preview-item-content">
                       <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
@@ -261,7 +263,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="../../assets/images/faces/face15.jpg" alt="">
+                    <img class="img-xs rounded-circle" src="./assets/images/faces/face15.jpg" alt="">
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
@@ -304,115 +306,92 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
+              <h3 class="page-title"> Form elements </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
                 </ol>
               </nav>
             </div>
             <div class="row">
-              <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between mb-5">
-                      <h4 class="card-title ">Products Table</h4>
-                      <a href="new-product.php" class="btn btn-primary btn-fw">Add Product</a>
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-5">New Product</h4>
+                        <?php
+   $servername = "localhost"; // Replace with your database server name
+   $username = "root"; // Replace with your database username
+   $password = ""; // Replace with your database password
+   $dbname = "automotive_new"; // Replace with your database name
+   
+   // Create connection
+   $conn = mysqli_connect($servername, $username, $password, $dbname);
+   
+   // Check connection
+   if (!$conn) {
+       die("Connection failed: " . mysqli_connect_error());
+   }
 
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Retrieve form data
+        $name = $_POST['name'];
+        $quantity = $_POST['quantity'];
+        $user = $_POST['user_id'];
+        $oldPrice = $_POST['old_price'];
+        $newPrice = $_POST['new_price'];
+        $description = $_POST['description'];
+
+
+        // // Perform SQL insertion
+        $sql = "INSERT INTO product (names, quantity, user_id, old__price, new_price, description) 
+                VALUES ('$name', '$quantity', '$user', '$oldPrice', '$newPrice', '$description')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "<h1 class=\"text-primary\">New record added successfully</h1>";
+        } else {
+            echo "<h1 class=\"text-danger\">Error: " . $sql . "<br>" . mysqli_error($conn) . "</h1>";
+        }
+    }
+?>
+
+
+            
+                        <form class="forms-sample" method="POST" action="">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Name</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Quantity</label>
+                                <input type="number" class="form-control" id="exampleInputEmail1" placeholder="" name="quantity">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">User</label>
+                                <input type="number" class="form-control" id="exampleInputPassword1" placeholder="" name="user_id">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputConfirmPassword1">Old Price</label>
+                                <input type="number" class="form-control" id="exampleInputConfirmPassword1" placeholder="" name="old_price">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputConfirmPassword1">New Price</label>
+                                <input type="number" class="form-control" id="exampleInputConfirmPassword1" placeholder="" name="new_price">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputConfirmPassword1">Description</label>
+                                <textarea class="form-control" id="exampleTextarea1" rows="4" name="description"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mr-2">Add</button>
+                        </form>
                     </div>
-                    <div class="table-responsive">
-                      <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Old Price</th>
-                            <th>New Price</th>
-                            <th>Description</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php
-                            include 'db_connection.php';
-
-                            if (isset($_POST['delete_id'])) {
-                              $deleteId = $_POST['delete_id'];
-                          
-                              // Use prepared statement to prevent SQL injection
-                              $deleteStatement = $conn->prepare("DELETE FROM product WHERE id = ?");
-                              $deleteStatement->bind_param("i", $deleteId);
-                          
-                              if ($deleteStatement->execute()) {
-                                  echo "Product with ID $deleteId has been deleted.";
-                              } else {
-                                  echo "Error deleting product: " . $deleteStatement->error;
-                              }
-                          
-                              // Close the prepared statement
-                              $deleteStatement->close();
-                          }
-
-                            // Your SQL query to get all users
-                            $sql = "SELECT id, quantity, names, old__price, new_price, description FROM product";
-
-                            // Execute the query
-                            $result = $conn->query($sql);
-
-                            // Check if the query was successful
-                            if ($result) {
-                                // Fetch data
-                                while ($row = $result->fetch_assoc()) {
-                                    // Process each row of data
-                                    $id = $row['id'];
-                                    $name = $row['names'];
-                                    $quantity = $row['quantity'];
-                                    $old_price = $row['old__price'];
-                                    $new_price = $row['new_price'];
-                                    $description = $row['description'];
-
-                                    echo "<tr>";
-                                    echo "<td>" . $id ."</td>";
-                                    echo "<td>" . $name ."</td>";
-                                    echo "<td>" . $quantity ."</td>";
-                                    echo "<td>" . $old_price ."</td>";
-                                    echo "<td>" . $new_price ."</td>";
-                                    echo "<td>" . $description ."</td>";
-                                    echo "<td>
-                                    <div>
-                                  
-                                      <button type=\"button\" class=\"btn mr-3 btn-outline-success btn-icon-text\"><i class=\"mdi mdi-pen btn-icon-append\"></i>
-                              
-                                      <form method='post' action=''>
-                                      <input type='hidden' name='delete_id' value='{$id}'>
-                                      <button type=\"submit\" class=\"btn btn-outline-danger btn-icon-text\"><i class=\"mdi mdi-trash-can btn-icon-append\"></i>
-                                      </form>
-                                    </div>
-                                    </td>";
-                                    echo "</tr>";
-                                }
-
-                                // Free result set
-                                $result->free();
-                            } else {
-                                // If the query failed
-                                echo "Error: " . $sql . "<br>" . $conn->error;
-                            }
-
-                            // Close the connection
-                            $conn->close();
-                            ?>
-                        </tbody>
-                      </table>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
           </div>
           <!-- content-wrapper ends -->
-          <!-- partial:../../partials/_footer.html -->
+          <!-- partial:./partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
               <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
@@ -430,6 +409,8 @@
     <script src="./assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
+    <script src="./assets/vendors/select2/select2.min.js"></script>
+    <script src="./assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="./assets/js/off-canvas.js"></script>
@@ -439,6 +420,9 @@
     <script src="./assets/js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
+    <script src="./assets/js/file-upload.js"></script>
+    <script src="./assets/js/typeahead.js"></script>
+    <script src="./assets/js/select2.js"></script>
     <!-- End custom js for this page -->
   </body>
 </html>
