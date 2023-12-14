@@ -1,5 +1,6 @@
 <?php
 // Create a connection
+session_start();
 $conn = mysqli_connect("localhost", "root", "", "automotive_new") or die(mysqli_error());
 
 // Check the connection
@@ -29,6 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verify the entered password against the stored hashed password
         if (password_verify($password, $row['password'])) {
             // Password is correct
+
+            $_SESSION['user_id'] = $row['id'];
             header("Location: user_homepage.html");
             exit(); // Ensure that no further code is executed after the redirect
         } else {
@@ -42,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_close($stmt);
 }
 
-// ... (your existing code)
 
 // Process form data for update
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
