@@ -38,7 +38,19 @@
 
 </head>
 
+
 <body class="sub_page">
+<?php
+// Initialize the session
+session_start();
+
+// Unset all session variables
+session_unset();
+
+// Destroy the session
+session_destroy();
+?>
+
   <div class="hero_area">
     <!-- header section strats -->
     <div class="hero_bg_box">
