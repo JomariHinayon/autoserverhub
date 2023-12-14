@@ -150,9 +150,10 @@ session_destroy();
                   <div>
            
             <i id="showPasswordIcon" class="fas fa-eye" onclick="togglePasswordVisibility()"></i>
-            <label for="passwords">Show Password</label>
+            <label for="passwords">Show Password</label><br>
+            <label for="register.php"><a href="register.php">Don't Have Account?</a></label>
         </div>
-
+          
         <script>
             function togglePasswordVisibility() {
                 var passwordField = document.getElementById('passwords');
