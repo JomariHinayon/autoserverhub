@@ -81,11 +81,12 @@ button a {
                         // Display order details
                         echo "<h3>Order Details:</h3>";
                         echo "<ul>";
-                        
+                       $order = $order ?? [];
+                            foreach ($order as $item) {
                             $quantity = $order['quantity'];
                             $total = $order['total'];
-                            echo "<li>ticketid: $ticketId, Quantity: $quantity, Total: $$total</li>";
-                        
+                            echo "Quantity: $quantity, Total: $$total</li>";
+                        }
                         echo "</ul>";
 
                         // Update the cart_tbl with the new values

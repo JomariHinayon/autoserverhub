@@ -63,7 +63,7 @@ https://www.tooplate.com/view/2125-artxibition
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="user_homepage.html">Home</a></li>
-                            <li><a href="rent-venue.html">user Profile</a></li>
+                            <li><a href="updateprofile.php">user Profile</a></li>
                             <li><a href="tickets.php">Products</a></li>  
                         </ul>        
                         <a class='menu-trigger'>

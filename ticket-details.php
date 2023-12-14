@@ -106,7 +106,7 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="user_homepage.html">Home</a></li>
-                            <li><a href="rent-venue.html">user Profile</a></li>
+                            <li><a href="updateprofile.php">user Profile</a></li>
                             <li><a href="tickets.php">Cart</a></li>  
                         </ul>        
                         <a class='menu-trigger'>
